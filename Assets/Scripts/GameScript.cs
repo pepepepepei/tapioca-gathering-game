@@ -74,7 +74,7 @@ public class GameScript : MonoBehaviour
         tapiocaNum = 0;
         fixFlag = 0;
 
-        script.coroutineFlag = 0;
+        script.coroutineFlag = false;
 
         timerLabel.text = "空から降ってくるタピオカをコップで集めるゲーム";
         countLabel.text = "";

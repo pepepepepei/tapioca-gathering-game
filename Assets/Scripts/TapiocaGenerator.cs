@@ -9,7 +9,7 @@ public class TapiocaGenerator : MonoBehaviour
 
     GameScript script;
 
-    public float coroutineFlag = 0;
+    public bool coroutineFlag = false;
 
     void Start()
     {
@@ -20,10 +20,10 @@ public class TapiocaGenerator : MonoBehaviour
     {
         if (script.countDown <= 0.0f)
         {
-            if (coroutineFlag == 0 && script.timer > 0.0f)
+            if (!coroutineFlag && script.timer > 0.0f)
             {
                 StartCoroutine("Generator");
-                coroutineFlag = 1;
+                coroutineFlag = true;
             }
             else if (script.timer <= 0.0f)
             {
