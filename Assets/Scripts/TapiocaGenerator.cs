@@ -18,17 +18,22 @@ public class TapiocaGenerator : MonoBehaviour
 
     void Update()
     {
-        if (script.countDown <= 0.0f)
+        // ゲームが開始前であれば
+        if (script.countDown > 0.0f)
         {
-            if (!coroutineFlag && script.timer > 0.0f)
-            {
-                StartCoroutine("Generator");
-                coroutineFlag = true;
-            }
-            else if (script.timer <= 0.0f)
-            {
-                StopCoroutine("Generator");
-            }
+            // なにもしない
+            return;
+        }
+        // ゲームが開始したら
+        if (!coroutineFlag && script.timer > 0.0f)
+        {
+            StartCoroutine("Generator");
+            coroutineFlag = true;
+        }
+        // ゲームが終了したら
+        else if (script.timer <= 0.0f)
+        {
+            StopCoroutine("Generator");
         }
     }
 
