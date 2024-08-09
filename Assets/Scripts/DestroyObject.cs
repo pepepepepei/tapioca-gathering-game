@@ -18,7 +18,7 @@ public class DestroyObject : MonoBehaviour
         if (this.gameObject.transform.position.y <= -5.0f)
             Destroy(this.gameObject);
 
-        if (script.startFlag == 0 && this.gameObject.transform.position.y <= -1)
+        if (!script.startFlag && this.gameObject.transform.position.y <= -1)
             Destroy(this.gameObject);
 
     }

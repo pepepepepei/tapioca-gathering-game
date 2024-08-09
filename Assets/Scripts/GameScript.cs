@@ -10,9 +10,9 @@ public class GameScript : MonoBehaviour
 
     [System.NonSerialized] public float countDown = 5.0f;
     [System.NonSerialized] public float timer = 20.0f;
-    [System.NonSerialized] public float startFlag = 0;
-    [System.NonSerialized] public float tapiocaNum = 0;
-    [System.NonSerialized] public float fixFlag = 0;
+    [System.NonSerialized] public bool startFlag = false;
+    [System.NonSerialized] public int tapiocaNum = 0;
+    [System.NonSerialized] public bool fixFlag = false;
 
     public GameObject startButton;
     public GameObject retryButton;
@@ -29,50 +29,56 @@ public class GameScript : MonoBehaviour
 
     void Update()
     {
-        if (startFlag == 1)
+        // 開始ボタンが押されていなければ
+        if (!startFlag)
         {
-            if (countDown > 0.0f)
-            {
-                countDown -= Time.deltaTime;
-                timerLabel.text = countDown.ToString("f0");
-                startButton.SetActive(false);
-            }
-            else if (timer > 0.0f)
-            {
-                timer -= Time.deltaTime;
-                timerLabel.text = timer.ToString("f1");
-            }
-            else if (timer > -1.5f)
-            {
-                timer -= Time.deltaTime;
-                timerLabel.text = "いっぱい取れたー！";
-            }
-            else if (timer > -1.5f)
-            {
-
-            }
-            else if (timer <= -1.5f)
-            {
-                tapiocaObj = GameObject.FindGameObjectsWithTag("Tapioca");
-                tapiocaNum = tapiocaObj.Length - 1;
-                countLabel.text = "集めたタピオカ（個）：" + tapiocaNum;
-                retryButton.SetActive(true);
-            }
+            // なにもしない
+            return;
+        }
+        // カウントダウン中ならば
+        if (countDown > 0.0f)
+        {
+            countDown -= Time.deltaTime;
+            timerLabel.text = countDown.ToString("f0");
+            startButton.SetActive(false);
+            return;
+        }
+        // ゲーム中ならば
+        if (timer > 0.0f)
+        {
+            timer -= Time.deltaTime;
+            timerLabel.text = timer.ToString("f1");
+        }
+        // ゲームが終了ならば
+        else if (timer > -1.5f)
+        {
+            timer -= Time.deltaTime;
+            timerLabel.text = "いっぱい取れたー！";
+        }
+        // ゲーム終了から１.5秒後
+        else
+        {
+            // リザルトを表示
+            tapiocaObj = GameObject.FindGameObjectsWithTag("Tapioca");
+            tapiocaNum = tapiocaObj.Length - 1;
+            countLabel.text = "集めたタピオカ（個）：" + tapiocaNum;
+            retryButton.SetActive(true);
         }
     }
 
+
     public void StartButton()
     {
-        startFlag = 1;
+        startFlag = true;
     }
 
     public void RetryButton()
     {
-        startFlag = 0;
+        startFlag = false;
         countDown = 5.0f;
         timer = 20.0f;
         tapiocaNum = 0;
-        fixFlag = 0;
+        fixFlag = false;
 
         generatorScript.coroutineFlag = false;
 

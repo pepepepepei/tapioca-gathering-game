@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (script.startFlag == 0 && script.fixFlag == 0)
+        if (!script.startFlag && !script.fixFlag)
         {
             Transform mugTransform = this.transform;
             Vector3 mugPos = mugTransform.position;
@@ -58,7 +58,7 @@ public class PlayerScript : MonoBehaviour
 
             _rigidbody.velocity = Vector3.zero;
 
-            script.fixFlag = 1;
+            script.fixFlag = true;
         }
     }
 }
