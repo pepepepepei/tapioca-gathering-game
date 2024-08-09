@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class TapiocaGenerator : MonoBehaviour
 {
-    public GameObject liquid;
     public GameObject tapioca;
     public GameObject GameManager;
 
     GameScript script;
 
     public float coroutineFlag = 0;
-    public float liquidNum = 0;
 
     void Start()
     {
