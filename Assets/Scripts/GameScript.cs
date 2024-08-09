@@ -20,11 +20,11 @@ public class GameScript : MonoBehaviour
     public GameObject Straw;
 
     GameObject[] tapiocaObj;
-    TapiocaGenerator script;
+    TapiocaGenerator generatorScript;
 
     void Start()
     {
-        script = Generator.GetComponent<TapiocaGenerator>();
+        generatorScript = Generator.GetComponent<TapiocaGenerator>();
     }
 
     void Update()
@@ -74,7 +74,7 @@ public class GameScript : MonoBehaviour
         tapiocaNum = 0;
         fixFlag = 0;
 
-        script.coroutineFlag = false;
+        generatorScript.coroutineFlag = false;
 
         timerLabel.text = "空から降ってくるタピオカをコップで集めるゲーム";
         countLabel.text = "";
