@@ -1444,6 +1444,7 @@ MonoBehaviour:
   startButton: {fileID: 741805464}
   retryButton: {fileID: 864586546}
   Generator: {fileID: 1833612208}
+  Mug: {fileID: 170482875}
   Straw: {fileID: 894586341}
 --- !u!1 &1167269237
 GameObject:
@@ -2038,11 +2039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4020a749215e4134a240df952c159eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liquid: {fileID: 0}
   tapioca: {fileID: 1789843420}
   GameManager: {fileID: 949815926}
   coroutineFlag: 0
-  liquidNum: 0
 --- !u!4 &1833612210
 Transform:
   m_ObjectHideFlags: 0
