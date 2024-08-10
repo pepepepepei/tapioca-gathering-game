@@ -17,14 +17,17 @@ public class GameScript : MonoBehaviour
     public GameObject startButton;
     public GameObject retryButton;
     public GameObject Generator;
+    public GameObject Mug;
     public GameObject Straw;
 
     GameObject[] tapiocaObj;
     TapiocaGenerator generatorScript;
+    private Rigidbody _rigidbody;
 
     void Start()
     {
         generatorScript = Generator.GetComponent<TapiocaGenerator>();
+        _rigidbody = Straw.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -87,5 +90,29 @@ public class GameScript : MonoBehaviour
 
         startButton.SetActive(true);
         retryButton.SetActive(false);
+
+        Transform mugTransform = Mug.transform;
+        Vector3 mugPos = mugTransform.position;
+        mugPos.x = -8;
+        mugPos.y = -4;
+        mugPos.z = 0;
+        mugTransform.position = mugPos;
+
+        Transform strawTransform = Straw.transform;
+        Vector3 strawPos = strawTransform.position;
+        strawPos.x = -7.8f;
+        strawPos.y = -1.5f;
+        strawPos.z = 0;
+        strawTransform.position = strawPos;
+
+        Vector3 strawAngle = strawTransform.eulerAngles;
+        strawAngle.x = 0;
+        strawAngle.y = 0;
+        strawAngle.z = -28;
+        strawTransform.eulerAngles = strawAngle;
+
+        _rigidbody.velocity = Vector3.zero;
+
+        fixFlag = true;
     }
 }
