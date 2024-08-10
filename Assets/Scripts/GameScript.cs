@@ -12,7 +12,6 @@ public class GameScript : MonoBehaviour
     [System.NonSerialized] public float timer = 20.0f;
     [System.NonSerialized] public bool startFlag = false;
     [System.NonSerialized] public int tapiocaNum = 0;
-    [System.NonSerialized] public bool fixFlag = false;
 
     public GameObject startButton;
     public GameObject retryButton;
@@ -81,7 +80,6 @@ public class GameScript : MonoBehaviour
         countDown = 5.0f;
         timer = 20.0f;
         tapiocaNum = 0;
-        fixFlag = false;
 
         generatorScript.coroutineFlag = false;
 
@@ -112,7 +110,5 @@ public class GameScript : MonoBehaviour
         strawTransform.eulerAngles = strawAngle;
 
         _rigidbody.velocity = Vector3.zero;
-
-        fixFlag = true;
     }
 }
